@@ -2,16 +2,16 @@
 
 body {
     font-family: 'Playfair Display', serif;
-    background-color: #E8F3D6; /* Pastel Xanh Lá */
+    background-color: #f5f3ef; /* Màu nền nhẹ của bản vẽ */
     margin: 0;
     padding: 40px 0;
     display: flex;
     justify-content: center;
-    color: #3A4D39; /* Màu chữ xanh đậm cũ */
+    color: #3A4D39; /* Màu xanh đậm chữ của ông */
 }
 
-/* Stickers bay lượn */
-.sticker { position: fixed; font-size: 2.5rem; opacity: 0.7; z-index: -1; animation: float 6s infinite ease-in-out; }
+/* Stickers */
+.sticker { position: fixed; font-size: 2.2rem; opacity: 0.6; z-index: -1; animation: float 6s infinite ease-in-out; }
 .s1 { top: 5%; left: 5%; }
 .s2 { top: 15%; right: 8%; animation-delay: 1s; }
 .s3 { bottom: 10%; left: 5%; animation-delay: 2s; }
@@ -19,53 +19,52 @@ body {
 .s5 { bottom: 25%; left: 3%; animation-delay: 1.5s; }
 .s6 { top: 60%; right: 7%; animation-delay: 0.5s; }
 
-@keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-20px) rotate(15deg); } }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-15px) rotate(10deg); } }
 
 .main-card {
     background: #ffffff;
     width: 90%;
     max-width: 1000px;
     padding: 80px 100px;
-    box-shadow: 0 10px 50px rgba(0,0,0,0.02);
-    border-radius: 10px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.03);
+    border-radius: 4px; /* Bo góc nhẹ theo bản vẽ */
     box-sizing: border-box;
 }
 
-header { text-align: center; margin-bottom: 50px; }
-.name { font-size: 56px; color: #3A4D39; margin: 0 0 20px 0; font-weight: 700; letter-spacing: -1px; }
-.quote { font-family: 'Charm', cursive; font-size: 26px; color: #4F6F52; line-height: 1.6; margin-bottom: 15px; }
+header { text-align: center; margin-bottom: 80px; }
+.name { font-size: 56px; color: #3A4D39; margin: 0 0 20px 0; font-weight: 700; }
+.quote { font-family: 'Charm', cursive; font-size: 26px; color: #4F6F52; line-height: 1.4; margin-bottom: 10px; }
 .author { font-size: 14px; color: #999; letter-spacing: 3px; text-transform: uppercase; }
 
-.avatar-box-center { margin: 30px 0; display: flex; justify-content: center; }
-.avatar { width: 220px; height: 220px; border-radius: 50%; border: 8px solid #f9f9f7; object-fit: cover; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+.avatar-box-center { margin: 40px 0; display: flex; justify-content: center; }
+.avatar { width: 260px; height: 260px; border-radius: 50%; border: 8px solid #f5f3ef; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
 
-/* Card Dashboard - Căn giữa tiêu đề, không còn dấu + */
+/* Card Dashboard - Căn giữa tiêu đề, không dấu + */
 .card {
-    background: #f9f9f7;
-    border-radius: 15px;
-    padding: 35px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px 20px;
     margin-bottom: 20px;
     cursor: pointer;
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(0,0,0,0.03);
+    transition: 0.3s;
+    border: 1px solid #3A4D39; /* Viền xanh theo bản vẽ */
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
-.card:hover { transform: scale(1.02); background: #ffffff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: #4F6F52; }
+.card:hover { background: #f9fbf7; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(58, 77, 57, 0.1); }
 
-.card-header-center h2 { font-size: 22px; color: #3A4D39; margin: 0; font-weight: 700; line-height: 1.2; }
+.card-header-center h2 { font-size: 24px; color: #3A4D39; margin: 0; font-weight: 700; }
 
 .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
 
-/* MODAL - HIỆU ỨNG TRANG TRỌNG */
+/* MODAL - Popup giữa màn hình */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.75); /* Nền tối hẳn */
-    backdrop-filter: blur(8px); /* Mờ nền */
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,51 +79,47 @@ header { text-align: center; margin-bottom: 50px; }
     background: #ffffff;
     width: 85%;
     max-width: 650px;
-    max-height: 80vh;
     padding: 50px;
-    border-radius: 30px;
+    border-radius: 20px;
     position: relative;
-    box-shadow: 0 25px 100px rgba(0,0,0,0.5);
-    transform: translateY(30px);
-    transition: 0.4s;
-    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.modal-overlay.active .modal-content { transform: translateY(0); }
+.modal-overlay.active .modal-content { transform: scale(1); }
 
-.close-btn { position: absolute; top: 25px; right: 30px; font-size: 35px; cursor: pointer; color: #ccc; transition: 0.3s; }
-.close-btn:hover { color: #3A4D39; }
+.close-btn { position: absolute; top: 20px; right: 25px; font-size: 35px; cursor: pointer; color: #bbb; }
 
-/* Nội dung Modal - Fix font và giãn cách chữ */
+/* Font & Spacing nội dung trong Modal */
 #modalBody { 
     font-family: 'Playfair Display', serif; 
     color: #3A4D39; 
-    font-size: 18px; 
-    line-height: 1.9; /* Chữ cách đều nhau */
+    font-size: 17px; 
+    line-height: 1.8; /* Giãn cách dòng cách đều */
     text-align: justify; 
 }
-#modalBody h2 { font-size: 28px; border-bottom: 2px solid #E8F3D6; padding-bottom: 10px; margin-top: 0; }
+#modalBody h2 { font-size: 26px; border-left: 4px solid #3A4D39; padding-left: 15px; margin-top: 0; }
 
-.italic-intro { font-style: italic; color: #4F6F52; display: block; margin-bottom: 20px; font-size: 20px; }
+.italic-intro { font-style: italic; color: #4F6F52; display: block; margin-bottom: 20px; font-size: 19px; }
 .info-list { list-style: none; padding: 0; }
-.info-list li { margin-bottom: 15px; padding-left: 25px; position: relative; }
+.info-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
 .info-list li::before { content: "🍀"; position: absolute; left: 0; top: 2px; font-size: 14px; }
 
-.note-box { background: #fdfdfb; padding: 25px; border-radius: 15px; border-left: 5px solid #4F6F52; font-style: italic; margin-top: 25px; font-size: 16px; }
+.note-box { background: #fafaf8; padding: 25px; border-radius: 4px; border-left: 1px solid #e0e0d0; font-style: italic; color: #666; margin-top: 20px; line-height: 1.8; }
 
 /* Gallery */
-.gallery-title { font-size: 24px; color: #3A4D39; margin: 60px 0 30px; text-align: center; letter-spacing: 4px; }
+.gallery-title { font-size: 24px; color: #3A4D39; margin: 80px 0 30px; text-align: center; letter-spacing: 2px; }
 .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.photo-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; transition: 0.5s; filter: grayscale(20%); }
-.photo-grid img:hover { filter: grayscale(0); transform: scale(1.02); }
+.photo-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-footer { margin-top: 100px; text-align: center; border-top: 1px solid #eee; padding-top: 50px; }
-.footer-links a { color: #4F6F52; text-decoration: none; margin: 0 20px; font-weight: 600; font-size: 16px; }
-.copyright { font-size: 12px; color: #bbb; margin-top: 30px; letter-spacing: 2px; }
+footer { margin-top: 100px; text-align: center; border-top: 1px solid #f0f0f0; padding-top: 40px; }
+.footer-links a { color: #4F6F52; text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 15px; }
+.copyright { font-size: 12px; color: #bbb; margin-top: 25px; }
 
 @media (max-width: 768px) {
-    .main-card { padding: 40px 25px; }
+    .main-card { padding: 40px 20px; }
     .dashboard-grid { grid-template-columns: 1fr; }
     .photo-grid { grid-template-columns: repeat(2, 1fr); }
-    .name { font-size: 38px; }
-    .modal-content { padding: 30px; width: 90%; }
+    .name { font-size: 36px; }
+    .modal-content { padding: 30px; }
 }
