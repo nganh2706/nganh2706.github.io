@@ -7,31 +7,9 @@ body {
     padding: 40px 0;
     display: flex;
     justify-content: center;
-    color: #3A4D39;
+    color: #2c3e50;
     overflow-x: hidden;
 }
-
-/* Sticker Parallax Base */
-.sticker { 
-    position: fixed; font-size: 2.5rem; opacity: 0.6; z-index: -1; 
-    transition: transform 0.1s ease-out; /* Mượt mà khi di chuột */
-}
-.s1 { top: 10%; left: 10%; }
-.s2 { top: 15%; right: 12%; }
-.s3 { bottom: 15%; left: 8%; }
-.s4 { top: 50%; right: 5%; }
-.s5 { bottom: 20%; left: 3%; }
-.s6 { top: 65%; right: 10%; }
-
-/* Hiệu ứng load trang cho Header */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-header .name { animation: fadeInUp 1s ease-out forwards; }
-header .quote { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
-header .avatar { animation: fadeInUp 1s ease-out 0.6s forwards; opacity: 0; }
 
 .main-card {
     background: #ffffff;
@@ -40,45 +18,43 @@ header .avatar { animation: fadeInUp 1s ease-out 0.6s forwards; opacity: 0; }
     padding: 80px 100px;
     box-shadow: 0 10px 50px rgba(0,0,0,0.03);
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
-header { text-align: center; margin-bottom: 80px; }
-.name { font-size: 56px; color: #3A4D39; margin: 0 0 20px 0; font-weight: 700; }
-.quote { font-family: 'Charm', cursive; font-size: 26px; color: #4F6F52; line-height: 1.6; }
-.avatar-box-center { margin: 40px 0; display: flex; justify-content: center; }
-.avatar { width: 260px; height: 260px; border-radius: 50%; border: 8px solid #f5f3ef; object-fit: cover; }
+header { text-align: center; margin-bottom: 60px; }
+.name { font-size: 56px; color: #3A4D39; margin: 0 0 10px 0; font-weight: 700; }
+.quote { font-family: 'Charm', cursive; font-size: 24px; color: #4F6F52; line-height: 1.4; }
+.author { font-size: 13px; color: #bbb; letter-spacing: 3px; }
 
-/* Dashboard Cards với Glow effect */
+/* Intro Section */
+.intro-container { display: flex; align-items: center; gap: 50px; margin-bottom: 60px; }
+.text-area { flex: 2; font-size: 17px; line-height: 1.8; text-align: justify; }
+.avatar-box { flex: 1; text-align: right; }
+.avatar { width: 240px; height: 240px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+.italic-intro { font-style: italic; color: #4F6F52; display: block; margin-bottom: 15px; font-size: 18px; }
+
+/* Dashboard xịn hơn */
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.wide-card { grid-column: span 3; }
 .card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 45px 20px;
-    margin-bottom: 20px;
+    background: #fafaf8;
+    padding: 30px 15px;
+    text-align: center;
     cursor: pointer;
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid #3A4D39;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    border-radius: 8px;
+    transition: 0.3s;
+    border: 1px solid transparent;
 }
-.card:hover { 
-    transform: translateY(-8px); 
-    box-shadow: 0 15px 30px rgba(58, 77, 57, 0.15);
-    background: #fdfdfd;
-}
-.card-header-center h2 { font-size: 24px; color: #3A4D39; margin: 0; font-weight: 700; }
+.card:hover { background: #fff; border-color: #4F6F52; transform: translateY(-3px); }
+.card h2 { font-size: 18px; color: #3A4D39; margin: 0; }
 
-.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-/* MODAL & LIGHTBOX */
+/* Modal & Lightbox Glassmorphism */
 .modal-overlay, .lightbox {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(58, 77, 57, 0.3);
-    backdrop-filter: blur(12px); /* Blur sâu sang trọng */
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,38 +66,40 @@ header { text-align: center; margin-bottom: 80px; }
 .modal-overlay.active, .lightbox.active { opacity: 1; visibility: visible; }
 
 .modal-content {
-    background: #ffffff;
-    width: 85%;
-    max-width: 650px;
-    padding: 50px;
-    border-radius: 20px;
-    transform: scale(0.9);
-    transition: 0.4s;
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 15px;
+    position: relative;
+    line-height: 1.8;
 }
-.modal-overlay.active .modal-content { transform: scale(1); }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 80vh;
-    border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    transform: scale(0.9);
-    transition: 0.4s;
-}
-.lightbox.active img { transform: scale(1); }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #ccc; }
 
-/* Nội dung Modal */
-#modalBody { font-family: 'Playfair Display', serif; color: #3A4D39; font-size: 18px; line-height: 1.9; text-align: justify; }
-.info-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
-.info-list li::before { content: "🍀"; position: absolute; left: 0; font-size: 14px; }
+/* Info List */
+.info-list { list-style: none; padding: 0; }
+.info-list li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+.info-list li::before { content: "•"; position: absolute; left: 0; color: #4F6F52; font-size: 20px; }
 
-/* Gallery */
-.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.photo-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; cursor: pointer; transition: 0.4s; }
-.photo-grid img:hover { filter: brightness(1.1); transform: scale(1.02); }
+.note-box { background: #f9f9f9; padding: 20px; border-left: 3px solid #4F6F52; font-style: italic; margin-top: 20px; }
+
+/* Photos */
+.gallery-title { font-size: 22px; color: #3A4D39; margin: 60px 0 20px; }
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.photo-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; cursor: pointer; }
+
+/* Stickers */
+.sticker { position: fixed; font-size: 1.5rem; opacity: 0.4; z-index: -1; }
+.s1 { top: 5%; left: 2%; } .s2 { top: 10%; right: 2%; } .s3 { bottom: 5%; left: 2%; }
+
+footer { margin-top: 80px; text-align: center; border-top: 1px solid #eee; padding-top: 40px; }
+.footer-links a { color: #4F6F52; text-decoration: none; margin: 0 15px; font-size: 14px; }
+.copyright { font-size: 11px; color: #bbb; margin-top: 20px; }
 
 @media (max-width: 768px) {
     .main-card { padding: 40px 20px; }
+    .intro-container { flex-direction: column-reverse; text-align: center; }
     .dashboard-grid, .photo-grid { grid-template-columns: 1fr; }
-    .name { font-size: 36px; }
+    .wide-card { grid-column: span 1; }
 }
