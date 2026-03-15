@@ -20,41 +20,45 @@
             <h1 class="name">Nguyễn Thị Ngọc Anh</h1>
             <p class="quote">"Tôi ở cùng những chữ hôm nay<br>Điều còn lại sau đường dài tôi vượt..."</p>
             <p class="author">— LƯU QUANG VŨ —</p>
+            <div class="avatar-box-center">
+                <img src="images/avatar.jpg" class="avatar" alt="Ngọc Anh">
+            </div>
         </header>
 
-        <div class="intro-container">
-            <div class="text-area">
-                <span class="italic-intro">"Every experience tells a story, and this portfolio is a collection of mine.”</span>
-                <p>Hello! My name is Ngoc Anh, and I’m delighted to welcome you to my personal portfolio. More than just a place to present my experiences, this space reflects my journey — the lessons I have learned, the challenges I have faced, and the passions that continue to shape who I am today.</p>
-            </div>
-            <div class="avatar-box">
-                <img src="images/avatar.jpg" class="avatar" alt="Ngọc Anh">
+        <div class="card wide-card" onclick="openModal('intro')">
+            <div class="card-header-center">
+                <h2>What I want to say</h2>
             </div>
         </div>
 
         <div class="dashboard-grid">
-            <div class="card wide-card" onclick="openModal('intro')">
-                <h2>What I want to say</h2>
-            </div>
             <div class="card" onclick="openModal('personal')">
-                <h2>Personal Information</h2>
+                <div class="card-header-center">
+                    <h2>Personal Information</h2>
+                </div>
             </div>
+
             <div class="card" onclick="openModal('activities')">
-                <h2>Extracurricular Activities</h2>
+                <div class="card-header-center">
+                    <h2>Extracurricular Activities</h2>
+                </div>
             </div>
+
             <div class="card" onclick="openModal('edu')">
-                <h2>Education Achievements</h2>
+                <div class="card-header-center">
+                    <h2>Education Achievements</h2>
+                </div>
             </div>
         </div>
 
         <h2 class="gallery-title">| PHOTOS</h2>
         <div class="photo-grid">
-            <img src="images/photo1.jpg" alt="Photo 1" onclick="openLightbox(this.src)">
-            <img src="images/photo2.jpg" alt="Photo 2" onclick="openLightbox(this.src)">
-            <img src="images/photo3.jpg" alt="Photo 3" onclick="openLightbox(this.src)">
-            <img src="images/photo4.jpg" alt="Photo 4" onclick="openLightbox(this.src)">
-            <img src="images/photo5.jpg" alt="Photo 5" onclick="openLightbox(this.src)">
-            <img src="images/photo6.jpg" alt="Photo 6" onclick="openLightbox(this.src)">
+            <img src="images/photo1.jpg" alt="Photo 1">
+            <img src="images/photo2.jpg" alt="Photo 2">
+            <img src="images/photo3.jpg" alt="Photo 3">
+            <img src="images/photo4.jpg" alt="Photo 4">
+            <img src="images/photo5.jpg" alt="Photo 5">
+            <img src="images/photo6.jpg" alt="Photo 6">
         </div>
 
         <footer>
@@ -74,21 +78,19 @@
         </div>
     </div>
 
-    <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
-        <img id="lightboxImg" src="">
-    </div>
-
     <div id="data-intro" style="display:none;">
+        <span class="italic-intro">"Every experience tells a story, and this portfolio is a collection of mine.”</span>
+        <p>Hello! My name is Ngoc Anh, and I’m delighted to welcome you to my personal portfolio. More than just a place to present my experiences, this space reflects my journey — the lessons I have learned, the challenges I have faced, and the passions that continue to shape who I am today.</p>
         <p>To me, a portfolio is not simply a record of projects or achievements, but a story that grows over time. Each page represents a step in my journey of learning and self-development. I also hope this portfolio can become a small "stopping point" for like-minded souls — a place where ideas resonate, inspiration is shared, and meaningful connections quietly begin.</p>
     </div>
 
     <div id="data-personal" style="display:none;">
         <h2>Personal Information</h2>
         <ul class="info-list">
-            <li>Date of birth: 27/06/2006</li>
-            <li>Student of Foreign Trade University</li>
-            <li>Second - year student - Accounting & Auditing major with ACCA international career orientation</li>
-            <li>Address: Ha Noi</li>
+            <li><strong>Date of birth:</strong> 27/06/2006</li>
+            <li><strong>Student of:</strong> Foreign Trade University</li>
+            <li><strong>Major:</strong> Second - year student - Accounting & Auditing major with ACCA international career orientation</li>
+            <li><strong>Address:</strong> Ha Noi</li>
         </ul>
     </div>
 
@@ -109,23 +111,21 @@
             <li>9.75 points in Literature in the 2024 National High School Graduation Examination</li>
         </ul>
         <div class="note-box">
-            After that, I had the opportunity to stay on as a Literature teaching assistant at Thuong Thuc Sach, and I've been there for two years now.
+            After that, I had the opportunity to stay on as a Literature teaching assistant at Thuong Thuc Sach, and I've been there for two years now. For me, being able to stay and motivate the younger students, sharing my experiences in writing essays to achieve the highest scores, is an honor I've had until now.
         </div>
     </div>
 
     <script>
         function openModal(id) {
-            document.getElementById('modalBody').innerHTML = document.getElementById('data-' + id).innerHTML;
+            const data = document.getElementById('data-' + id).innerHTML;
+            document.getElementById('modalBody').innerHTML = data;
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+
         function closeModal() {
             document.getElementById('modalOverlay').classList.remove('active');
             document.body.style.overflow = 'auto';
-        }
-        function openLightbox(src) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightbox').classList.add('active');
         }
     </script>
 </body>
