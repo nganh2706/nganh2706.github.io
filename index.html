@@ -115,4 +115,18 @@
         </div>
     </div>
 
-    <script
+    <script>
+        function openModal(id) {
+            const data = document.getElementById('data-' + id).innerHTML;
+            document.getElementById('modalBody').innerHTML = data;
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
