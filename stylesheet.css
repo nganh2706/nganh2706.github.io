@@ -2,15 +2,15 @@
 
 body {
     font-family: 'Playfair Display', serif;
-    background-color: #f5f3ef; /* Màu nền nhẹ của bản vẽ */
+    background-color: #f5f3ef;
     margin: 0;
     padding: 40px 0;
     display: flex;
     justify-content: center;
-    color: #3A4D39; /* Màu xanh đậm chữ của ông */
+    color: #3A4D39;
 }
 
-/* Stickers */
+/* Stickers trang trí */
 .sticker { position: fixed; font-size: 2.2rem; opacity: 0.6; z-index: -1; animation: float 6s infinite ease-in-out; }
 .s1 { top: 5%; left: 5%; }
 .s2 { top: 15%; right: 8%; animation-delay: 1s; }
@@ -27,7 +27,7 @@ body {
     max-width: 1000px;
     padding: 80px 100px;
     box-shadow: 0 10px 50px rgba(0,0,0,0.03);
-    border-radius: 4px; /* Bo góc nhẹ theo bản vẽ */
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
@@ -39,27 +39,29 @@ header { text-align: center; margin-bottom: 80px; }
 .avatar-box-center { margin: 40px 0; display: flex; justify-content: center; }
 .avatar { width: 260px; height: 260px; border-radius: 50%; border: 8px solid #f5f3ef; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
 
-/* Card Dashboard - Căn giữa tiêu đề, không dấu + */
+/* Dashboard Cards - Căn giữa tiêu đề theo cả 2 trục */
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+.wide-card { grid-column: span 3; margin-bottom: 20px; }
+
 .card {
     background: #ffffff;
     border-radius: 12px;
     padding: 40px 20px;
-    margin-bottom: 20px;
     cursor: pointer;
     transition: 0.3s;
-    border: 1px solid #3A4D39; /* Viền xanh theo bản vẽ */
+    border: 1px solid #3A4D39;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Căn giữa ngang */
+    align-items: center;    /* Căn giữa dọc */
+    min-height: 120px;      /* Đảm bảo các ô có chiều cao bằng nhau để căn giữa đẹp hơn */
+    text-align: center;
 }
+
 .card:hover { background: #f9fbf7; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(58, 77, 57, 0.1); }
+.card-header-center h2 { font-size: 20px; color: #3A4D39; margin: 0; font-weight: 700; line-height: 1.3; }
 
-.card-header-center h2 { font-size: 24px; color: #3A4D39; margin: 0; font-weight: 700; }
-
-.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
-
-/* MODAL - Popup giữa màn hình */
-.modal-overlay {
+/* Modal & Lightbox */
+.modal-overlay, .lightbox {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -73,7 +75,7 @@ header { text-align: center; margin-bottom: 80px; }
     visibility: hidden;
     transition: 0.4s;
 }
-.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-overlay.active, .lightbox.active { opacity: 1; visibility: visible; }
 
 .modal-content {
     background: #ffffff;
@@ -82,35 +84,29 @@ header { text-align: center; margin-bottom: 80px; }
     padding: 50px;
     border-radius: 20px;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     transform: scale(0.8);
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .modal-overlay.active .modal-content { transform: scale(1); }
 
+.lightbox img { max-width: 90%; max-height: 85vh; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+
 .close-btn { position: absolute; top: 20px; right: 25px; font-size: 35px; cursor: pointer; color: #bbb; }
 
-/* Font & Spacing nội dung trong Modal */
-#modalBody { 
-    font-family: 'Playfair Display', serif; 
-    color: #3A4D39; 
-    font-size: 17px; 
-    line-height: 1.8; /* Giãn cách dòng cách đều */
-    text-align: justify; 
-}
+/* Nội dung Modal */
+#modalBody { font-family: 'Playfair Display', serif; color: #3A4D39; font-size: 17px; line-height: 1.8; text-align: justify; }
 #modalBody h2 { font-size: 26px; border-left: 4px solid #3A4D39; padding-left: 15px; margin-top: 0; }
-
 .italic-intro { font-style: italic; color: #4F6F52; display: block; margin-bottom: 20px; font-size: 19px; }
 .info-list { list-style: none; padding: 0; }
 .info-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
 .info-list li::before { content: "🍀"; position: absolute; left: 0; top: 2px; font-size: 14px; }
-
 .note-box { background: #fafaf8; padding: 25px; border-radius: 4px; border-left: 1px solid #e0e0d0; font-style: italic; color: #666; margin-top: 20px; line-height: 1.8; }
 
 /* Gallery */
 .gallery-title { font-size: 24px; color: #3A4D39; margin: 80px 0 30px; text-align: center; letter-spacing: 2px; }
 .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.photo-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.photo-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+.photo-grid img:hover { transform: scale(1.02); filter: brightness(1.05); }
 
 footer { margin-top: 100px; text-align: center; border-top: 1px solid #f0f0f0; padding-top: 40px; }
 .footer-links a { color: #4F6F52; text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 15px; }
@@ -119,7 +115,7 @@ footer { margin-top: 100px; text-align: center; border-top: 1px solid #f0f0f0; p
 @media (max-width: 768px) {
     .main-card { padding: 40px 20px; }
     .dashboard-grid { grid-template-columns: 1fr; }
+    .wide-card { grid-column: span 1; }
     .photo-grid { grid-template-columns: repeat(2, 1fr); }
     .name { font-size: 36px; }
-    .modal-content { padding: 30px; }
 }
