@@ -8,10 +8,12 @@
 </head>
 <body>
 
-    <div class="sticker s1">🌿</div>
-    <div class="sticker s2">✨</div>
-    <div class="sticker s3">📖</div>
-    <div class="sticker s4">🌱</div>
+    <div class="sticker s1">🍀</div>
+    <div class="sticker s2">🌿</div>
+    <div class="sticker s3">🌷</div>
+    <div class="sticker s4">🍂</div>
+    <div class="sticker s5">🌻</div>
+    <div class="sticker s6">✨</div>
 
     <div class="main-card">
         <header>
@@ -23,62 +25,32 @@
             </div>
         </header>
 
-        <div class="card wide-card" onclick="toggleContent('intro')">
-            <div class="card-header">
+        <div class="card wide-card" onclick="openModal('intro')">
+            <div class="card-header-center">
                 <h2>What I want to say</h2>
-                <span class="icon">＋</span>
-            </div>
-            <div id="intro" class="content-hidden">
-                <span class="italic-intro">"Every experience tells a story, and this portfolio is a collection of mine.”</span>
-                <p>Hello! My name is Ngoc Anh, and I’m delighted to welcome you to my personal portfolio. More than just a place to present my experiences, this space reflects my journey — the lessons I have learned, the challenges I have faced, and the passions that continue to shape who I am today.</p>
-                <p>To me, a portfolio is not simply a record of projects or achievements, but a story that grows over time. Each page represents a step in my journey of learning and self-development. I also hope this portfolio can become a small "stopping point" for like-minded souls — a place where ideas resonate, inspiration is shared, and meaningful connections quietly begin.</p>
+                <span class="plus-icon">＋</span>
             </div>
         </div>
 
         <div class="dashboard-grid">
-            <div class="card" onclick="toggleContent('personal')">
-                <div class="card-header">
+            <div class="card" onclick="openModal('personal')">
+                <div class="card-header-center">
                     <h2>Personal Information</h2>
-                    <span class="icon">＋</span>
-                </div>
-                <div id="personal" class="content-hidden">
-                    <ul class="info-list">
-                        <li>Date of birth: 27/06/2006</li>
-                        <li>Student of Foreign Trade University</li>
-                        <li>Second - year student - Accounting & Auditing major with ACCA international career orientation</li>
-                        <li>Address: Ha Noi</li>
-                    </ul>
+                    <span class="plus-icon">＋</span>
                 </div>
             </div>
 
-            <div class="card" onclick="toggleContent('activities')">
-                <div class="card-header">
+            <div class="card" onclick="openModal('activities')">
+                <div class="card-header-center">
                     <h2>Extracurricular Activities</h2>
-                    <span class="icon">＋</span>
-                </div>
-                <div id="activities" class="content-hidden">
-                    <ul class="info-list">
-                        <li>Member of Communication Department at CFAA Club</li>
-                        <li>Member of Events Department at "Sưởi ấm vùng cao 2024"</li>
-                        <li>Member of Human Resources Department at "Cozy Village 2024"</li>
-                    </ul>
+                    <span class="plus-icon">＋</span>
                 </div>
             </div>
 
-            <div class="card" onclick="toggleContent('edu')">
-                <div class="card-header">
+            <div class="card" onclick="openModal('edu')">
+                <div class="card-header-center">
                     <h2>Education Achievements</h2>
-                    <span class="icon">＋</span>
-                </div>
-                <div id="edu" class="content-hidden">
-                    <p>I have a passion for literature, and here are some of my achievements:</p>
-                    <ul class="info-list">
-                        <li>Numerous awards for outstanding students in Literature at various levels</li>
-                        <li>9.75 points in Literature in the 2024 National High School Graduation Examination</li>
-                    </ul>
-                    <div class="note-box">
-                        After that, I had the opportunity to stay on as a Literature teaching assistant at Thuong Thuc Sach, and I've been there for two years now.
-                    </div>
+                    <span class="plus-icon">＋</span>
                 </div>
             </div>
         </div>
@@ -103,11 +75,61 @@
         </footer>
     </div>
 
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div id="data-intro" style="display:none;">
+        <span class="italic-intro">"Every experience tells a story, and this portfolio is a collection of mine.”</span>
+        <p>Hello! My name is Ngoc Anh, and I’m delighted to welcome you to my personal portfolio. More than just a place to present my experiences, this space reflects my journey — the lessons I have learned, the challenges I have faced, and the passions that continue to shape who I am today.</p>
+        <p>To me, a portfolio is not simply a record of projects or achievements, but a story that grows over time. Each page represents a step in my journey of learning and self-development. I also hope this portfolio can become a small "stopping point" for like-minded souls — a place where ideas resonate, inspiration is shared, and meaningful connections quietly begin.</p>
+    </div>
+
+    <div id="data-personal" style="display:none;">
+        <h2>Personal Information</h2>
+        <ul class="info-list">
+            <li>Date of birth: 27/06/2006</li>
+            <li>Student of Foreign Trade University</li>
+            <li>Second - year student - Accounting & Auditing major with ACCA international career orientation</li>
+            <li>Address: Ha Noi</li>
+        </ul>
+    </div>
+
+    <div id="data-activities" style="display:none;">
+        <h2>Extracurricular Activities</h2>
+        <ul class="info-list">
+            <li>Member of Communication Department at CFAA Club</li>
+            <li>Member of Events Department at "Sưởi ấm vùng cao 2024"</li>
+            <li>Member of Human Resources Department at "Cozy Village 2024"</li>
+        </ul>
+    </div>
+
+    <div id="data-edu" style="display:none;">
+        <h2>Education Achievements</h2>
+        <p>I have a passion for literature, and here are some of my achievements:</p>
+        <ul class="info-list">
+            <li>Numerous awards for outstanding students in Literature at various levels</li>
+            <li>9.75 points in Literature in the 2024 National High School Graduation Examination</li>
+        </ul>
+        <div class="note-box">
+            After that, I had the opportunity to stay on as a Literature teaching assistant at Thuong Thuc Sach, and I've been there for two years now.
+        </div>
+    </div>
+
     <script>
-        function toggleContent(id) {
-            const content = document.getElementById(id);
-            content.classList.toggle('content-show');
-            content.parentElement.classList.toggle('card-active');
+        function openModal(id) {
+            const data = document.getElementById('data-' + id).innerHTML;
+            document.getElementById('modalBody').innerHTML = data;
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Ngăn cuộn trang khi mở modal
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
