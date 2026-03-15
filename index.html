@@ -53,12 +53,12 @@
 
         <h2 class="gallery-title">| PHOTOS</h2>
         <div class="photo-grid">
-            <img src="images/photo1.jpg" alt="Photo 1">
-            <img src="images/photo2.jpg" alt="Photo 2">
-            <img src="images/photo3.jpg" alt="Photo 3">
-            <img src="images/photo4.jpg" alt="Photo 4">
-            <img src="images/photo5.jpg" alt="Photo 5">
-            <img src="images/photo6.jpg" alt="Photo 6">
+            <img src="images/photo1.jpg" alt="Photo 1" onclick="openLightbox(this.src)">
+            <img src="images/photo2.jpg" alt="Photo 2" onclick="openLightbox(this.src)">
+            <img src="images/photo3.jpg" alt="Photo 3" onclick="openLightbox(this.src)">
+            <img src="images/photo4.jpg" alt="Photo 4" onclick="openLightbox(this.src)">
+            <img src="images/photo5.jpg" alt="Photo 5" onclick="openLightbox(this.src)">
+            <img src="images/photo6.jpg" alt="Photo 6" onclick="openLightbox(this.src)">
         </div>
 
         <footer>
@@ -76,6 +76,10 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div id="modalBody"></div>
         </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+        <img id="lightboxImg" src="" alt="Zoomed Photo">
     </div>
 
     <div id="data-intro" style="display:none;">
@@ -126,6 +130,11 @@
         function closeModal() {
             document.getElementById('modalOverlay').classList.remove('active');
             document.body.style.overflow = 'auto';
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
         }
     </script>
 </body>
