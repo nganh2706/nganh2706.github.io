@@ -37,13 +37,11 @@
                     <h2>Personal Information</h2>
                 </div>
             </div>
-
             <div class="card" onclick="openModal('activities')">
                 <div class="card-header-center">
                     <h2>Extracurricular Activities</h2>
                 </div>
             </div>
-
             <div class="card" onclick="openModal('edu')">
                 <div class="card-header-center">
                     <h2>Education Achievements</h2>
@@ -53,12 +51,12 @@
 
         <h2 class="gallery-title">| PHOTOS</h2>
         <div class="photo-grid">
-            <img src="images/photo1.jpg" alt="Photo 1">
-            <img src="images/photo2.jpg" alt="Photo 2">
-            <img src="images/photo3.jpg" alt="Photo 3">
-            <img src="images/photo4.jpg" alt="Photo 4">
-            <img src="images/photo5.jpg" alt="Photo 5">
-            <img src="images/photo6.jpg" alt="Photo 6">
+            <img src="images/photo1.jpg" alt="Photo 1" onclick="openLightbox(this.src)">
+            <img src="images/photo2.jpg" alt="Photo 2" onclick="openLightbox(this.src)">
+            <img src="images/photo3.jpg" alt="Photo 3" onclick="openLightbox(this.src)">
+            <img src="images/photo4.jpg" alt="Photo 4" onclick="openLightbox(this.src)">
+            <img src="images/photo5.jpg" alt="Photo 5" onclick="openLightbox(this.src)">
+            <img src="images/photo6.jpg" alt="Photo 6" onclick="openLightbox(this.src)">
         </div>
 
         <footer>
@@ -76,6 +74,10 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div id="modalBody"></div>
         </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
+        <img id="lightboxImg" src="" alt="Zoomed Photo">
     </div>
 
     <div id="data-intro" style="display:none;">
@@ -111,22 +113,40 @@
             <li>9.75 points in Literature in the 2024 National High School Graduation Examination</li>
         </ul>
         <div class="note-box">
-            After that, I had the opportunity to stay on as a Literature teaching assistant at Thuong Thuc Sach, and I've been there for two years now. For me, being able to stay and motivate the younger students, sharing my experiences in writing essays to achieve the highest scores, is an honor I've had until now.
+            After that, I had the opportunity to stay on as a Literature teaching assistant at Thuong Thuc Sach, and I've been there for two years now.
         </div>
     </div>
 
     <script>
+        // Xử lý Modal
         function openModal(id) {
             const data = document.getElementById('data-' + id).innerHTML;
             document.getElementById('modalBody').innerHTML = data;
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeModal() {
             document.getElementById('modalOverlay').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
+
+        // Xử lý Lightbox
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        // Xử lý Sticker Parallax (bay theo chuột)
+        document.addEventListener('mousemove', (e) => {
+            const stickers = document.querySelectorAll('.sticker');
+            const x = (window.innerWidth / 2 - e.pageX) / 25;
+            const y = (window.innerHeight / 2 - e.pageY) / 25;
+
+            stickers.forEach((s, index) => {
+                const depth = (index + 1) * 0.4;
+                s.style.transform = `translate(${x * depth}px, ${y * depth}px) rotate(${x}deg)`;
+            });
+        });
     </script>
 </body>
 </html>
